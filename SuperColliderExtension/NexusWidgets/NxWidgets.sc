@@ -1,5 +1,5 @@
 NxButton : NxWidget {
-    var <value;
+    var <press;
 }
 
 NxColors : NxWidget {
