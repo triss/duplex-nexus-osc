@@ -1,0 +1,137 @@
+<!doctype html>
+   	<html>
+	<head>
+		<title>Nexus UI</title>
+
+        <script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="lib/jquery.js"></script>
+		<script type="text/javascript" src="lib/nexusUI.js"></script>
+	
+		<script>
+
+			var socket = io();
+
+            // a user id required due to not wanting to change Nexus's Node API
+            // - even if it is useless to me
+			var thisUser = {
+				name: "phone" + Math.floor(Math.random()*10000000000)
+			}
+
+            // a reference to the whole display
+            var display;
+
+            // all the currently displayed widgets
+            var widgets = {};
+
+            // create a widget and display it
+            function createWidget(w) {
+                // if the widget already exists delete it
+                if($.inArray(w.name, widgets)) {
+                    deleteWidget(w.name);
+                };
+                
+                // add to our cache of dispalyed widgets
+                widgets[w.name] = w;
+
+                // create a div to handle widget positioning
+                widgetDiv = $('<div id="' + w.name + '_div"></div>');
+                widgetDiv.css('position', 'absolute');
+                widgetDiv.css('left', w.x + "%");
+                widgetDiv.css('top', w.y + "%");
+                widgetDiv.css('width', w.w + "%");
+                widgetDiv.css('height', w.h + "%");
+
+                // create the widget
+                widgetCanvas = $(
+                    '<canvas nx="' + w.type + 
+                    '" id="' + w.name + '"' +
+                    ' style="width: 100%; height: 100%"></canvas>'
+                );
+
+                // add the canvas to the div
+                widgetDiv.append(widgetCanvas);
+
+                // add the widget to the display
+                // Adding objects via jQuery is always ugly
+                display.append(widgetDiv);
+
+                // call nexus's canvas -> nx widget stuff
+                transformCanvases();
+
+                // set the widget to send to Node - eval'ing since jQuery 
+                // doesn't immediately see widget in DOM
+                eval(w.name + '.sendsTo("node");');
+                
+                // set any properties that need to be set
+                $.each(w.properties, function(p) {
+                    updateWidget(w.name, p, w.properties[p]);
+                });
+
+                // draw the widget in case no params were specified
+                eval(w.name + '.draw()');
+            }
+
+            // delete a widget from ui
+            function deleteWidget(name) {
+                // remove from our cache
+                delete widgets[name];
+
+                // remove from our screen
+                $('#' + name + '_div').remove();
+            }
+
+            // update a widget 
+            function updateWidget(name, property, value) {
+                // here we construct JS and execute it - yuck!
+                var valUpdaterJS;
+
+                // some widget have a value instaed of an object in .val
+                // check to see if this one of them and update 
+                // appropriately
+                if(property != 'value') {
+                    valUpdaterJS = name + '.val["' + property + '"] = ';
+                } else {
+                    valUpdaterJS = name + '.val = ';
+                }
+
+                // if it's a string type property wrap it in quotes
+                if(typeof value == "string") {
+                    eval(valUpdaterJS + '"' + value + '"');
+                } else { // otherwise just dump it in the expression
+                    eval(valUpdaterJS + value); 
+                }
+
+                // redraw the widget
+                eval(name + '.draw();');
+            }
+
+			// on connection to server
+			socket.on('connect', function() {
+                socket.on('create', function(widgetSpec) {
+                    createWidget(widgetSpec);
+                });
+
+                socket.on('delete', function(name) {
+                    deleteWidget(name);        
+                });
+
+                socket.on('update', function(name, property, value) {
+                    updateWidget(name, property, value);       
+                });
+			});
+
+            // set refernce to display and to send to node by default
+			nx.onload = function() {
+                display = $('#display');
+				nx.sendsTo("node");
+			}
+		
+		</script>
+		
+	</head>
+	
+	<body>
+        <div id="display" style="width:100%;height:100%"></div>
+	</body>
+	
+</html>

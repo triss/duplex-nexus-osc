@@ -1,0 +1,15 @@
+{
+  "name": "duplex-nexus-osc",
+  "version": "0.0.0",
+  "description": "Create multiuser UI's via OSC using the Nexus widget set.",
+  "main": "nxserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tristan Strange",
+  "license": "ISC",
+  "dependencies": {
+    "node-osc": "^0.2.1",
+    "socket.io": "^1.0.6"
+  }
+}
