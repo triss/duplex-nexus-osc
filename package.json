@@ -9,7 +9,8 @@
   "author": "Tristan Strange",
   "license": "ISC",
   "dependencies": {
-    "node-osc": "^0.2.1",
-    "socket.io": "^1.0.6"
+    "node-osc": "0.2.1",
+    "socket.io": "1.0.6",
+    "connect": "2.19.1",
   }
 }
