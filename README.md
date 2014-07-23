@@ -18,7 +18,7 @@ In contrast to the OSC servers provided for NexusUI it also broadcasts the curre
 
 ## Starting Duplex Nexus OSC server
 
-Run:
+Launch the server with node:
 ```
 node nxserver.js
 ```
