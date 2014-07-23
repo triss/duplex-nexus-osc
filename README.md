@@ -10,11 +10,14 @@ In contrast to the OSC servers provided for NexusUI it also broadcasts the curre
 
 2.  Download and unpack this [repository archive](https://github.com/triss/duplex-nexus-osc/archive/master.zip).
 
-    Or clone the repsoitory using git: ``` git clone https://github.com/triss/duplex-nexus-osc.git ```
+    Or clone the repsoitory using git: 
+    ``` git clone https://github.com/triss/duplex-nexus-osc.git ```
 
-3.  Move in to the folder you just created: ```cd duplex-nexus-osc```
+3.  Move in to the folder you just created: 
+    ```cd duplex-nexus-osc```
 
-4.  Install dependancies with node's package manager: ``` npm install ```
+4.  Install dependancies with node's package manager: 
+    ``` npm install ```
 
 ## Starting Duplex Nexus OSC server
 
