@@ -100,4 +100,4 @@ z.action = { |nx|
 )
 ```
 
-See the Nx*Blah* classes in SuperColliders help system for more info.
+See the classes with Nx as there prefix in SuperColliders help system for more info.
