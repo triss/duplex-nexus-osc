@@ -1,7 +1,6 @@
 # Duplex Nexus OSC
 
 Duplex Nexus OSC allows [Nexus UI](http://www.nexusosc.com) control surfaces to be quickly constructed via OSC with out the hassle of writing any JavaScript or HTML.
-nexusTutorial
 
 In contrast to the OSC servers provided for NexusUI it also broadcasts the current state of its widget to all users connected to the system allowing developers to easily build interfaces that multiple users can interact with at the same time.
 
@@ -11,16 +10,11 @@ In contrast to the OSC servers provided for NexusUI it also broadcasts the curre
 
 2.  Download and unpack this [repository archive](https://github.com/triss/duplex-nexus-osc/archive/master.zip).
 
-    Or clone the repsoitory using git:
-    ```
-    git clone https://github.com/triss/duplex-nexus-osc.git
-    ```
-3.  ```cd duplex-nexus-osc```
+    Or clone the repsoitory using git: ``` git clone https://github.com/triss/duplex-nexus-osc.git ```
 
-4.  Install dependancies with node's package manager:
-    ```
-    npm install 
-    ```
+3.  Move in to the folder you just created: ```cd duplex-nexus-osc```
+
+4.  Install dependancies with node's package manager: ``` npm install ```
 
 ## Starting Duplex Nexus OSC server
 
