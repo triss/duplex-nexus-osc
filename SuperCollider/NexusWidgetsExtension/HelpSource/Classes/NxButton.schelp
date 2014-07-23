@@ -1,0 +1,38 @@
+TITLE:: NxButton
+summary:: A Nexus Button
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A Nexus OSC touch button: http://www.nexusosc.com/api/#button
+
+It's property press has either the value 1 or 0 dependant on wether or not it's being pressed.
+
+
+CLASSMETHODS::
+
+INSTANCEMETHODS::
+
+METHOD:: press
+Whether or the not the button is currently being pressed.
+
+returns:: 1 if pressed, 0 if not.
+
+
+EXAMPLES::
+
+code::
+(
+// create a new button
+b = NxButton(Rect(0, 0, 30, 30));
+
+// print to the console when it's pressed or released
+b.action = { |b|
+    if(b.press == 1) {
+        "button pressed".postln;
+    } {
+        "button related".postln;
+    }
+};
+)
+::

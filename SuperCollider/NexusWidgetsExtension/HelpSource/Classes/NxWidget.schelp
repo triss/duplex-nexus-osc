@@ -1,0 +1,71 @@
+TITLE:: NxWidget
+summary:: An abstract class that provides most of the functionality for the Nexus widget set.
+categories:: Nexus UI
+
+DESCRIPTION::
+NxWidget is an abstract class that provides most of the functionality for the Nexus widget set.
+
+
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new NxWidget.
+
+ARGUMENT:: bounds
+A Rect representing the size and position of the widget. Values should be given as a percentage of the screen.
+Defaults to filling the whole screen.
+
+ARGUMENT:: serverAddr
+A NetAddr pointing at a Duplex Nexus OSC Server (https://github.com/triss/duplex-nexus-osc).
+Points at the default port for Duplex Nexus OSC on the local machine by default.
+
+
+INSTANCEMETHODS::
+
+METHOD:: remove
+Removes the Widget from the display.
+
+METHOD:: action
+Gets or sets the default action of the view, i.e. the object to be evaluated when the user interacts with the view in an essential way (e.g. a Button is clicked, a ListView item is selected, etc.).
+
+ARGUMENT:: func
+Any object to set as default action, usually a Function or a FunctionList. When evaluated, it will be passed the NxWidget as an argument.
+
+METHOD:: create
+(Re)creates the widget on the server and connected clients. Called upon initialisation. 
+
+
+
+EXAMPLES::
+
+code::
+(
+// create a Sine oscillator synth with amp and freq as parameters
+a = { |freq=200 amp=0.5| SinOsc.ar(freq) * amp }.play;
+
+// create an NxPosition (XY) widget on the default Duplex Nexus OSC server
+// by default widgets fill 100% of the screen
+z = NxPosition();
+z.action = { |nx| 
+    a.set(
+        \freq, \freq.asSpec.map(nx.x) 
+        \amp, \amp.asSpec.map(nx.y)
+    )
+}
+)
+
+(
+// create a new button
+b = NxButton(Rect(0, 0, 30, 30));
+
+// print to the console when it's pressed or released
+b.action = { |b|
+    if(b.press == 1) {
+        "button pressed".postln;
+    } {
+        "button related".postln;
+    }
+};
+)
+::
