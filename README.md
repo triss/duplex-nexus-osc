@@ -94,7 +94,7 @@ z = NxPosition();
 z.action = { |nx| 
     a.set(
         \freq, \freq.asSpec.map(nx.x) 
-        \amp, \amp.asSpec.map(nx.y)
+        \amp, nx.y
     )
 }
 )
