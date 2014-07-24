@@ -108,14 +108,15 @@
                         valUpdaterJS += '        delete ' + name + '.val[i];}}';
                         break;
 
-                    // special handling for color property
                     // some widgets have a value instaed of an object in .val
                     // check to see if this one of them and update appropriately
-                    case 'value':
-                        valUpdaterJS += '.val = ';
-
                     default:
-                        valUpdaterJS += '.val["' + property + '"] = ';
+                        if(property == 'value') {
+                            valUpdaterJS += '.val = ';
+                        } else { 
+                            valUpdaterJS += '.val["' + property + '"] = ';
+                        }
+
 
                         // if it's a string type property wrap it in quotes
                         if(typeof value == "string") {
