@@ -6,7 +6,7 @@ NxWidget {
     var oscResponders;
     var oscName;
     
-    var bounds;
+    var <bounds;
     var properties;
 
     var <>action;
@@ -55,15 +55,26 @@ NxWidget {
             // add an osc responder for this property
             oscResponders[wp] = OSCFunc({ |msg|
                 this.instVarPut(wp, msg[1]);
-                this.action.(this);
+                action.(this);
             }, responderPath);
 
-            // create setters for properties
-            this.addUniqueMethod(wp.asSetter, { |obj value|
-                this.instVarPut(wp, value);
-                this.update(wp, value);
-            });
+            // create setters for properties that don't have them
+            if(this.respondsTo(wp.asSetter).not) {
+                this.addUniqueMethod(wp.asSetter, { |obj value|
+                    this.instVarPut(wp, value);
+                    this.updateProperty(wp, value);
+                });
+            };
         };
+    }
+
+    color_ { |c| 
+        this.updateProperty('color', c.hexString);
+    }
+
+    bounds_ { |rect|
+        bounds = rect;
+        this.create;
     }
 
     // each widget needs a name - we use this counter to produce one for 
@@ -82,7 +93,7 @@ NxWidget {
         );
     }
 
-    update { |property value| 
+    updateProperty { |property value| 
         serverAddr.sendMsg(
             '/nexus/update', oscName, property, value
         );

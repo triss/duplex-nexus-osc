@@ -40,6 +40,26 @@ NxMouse : NxWidget {
 
 NxMultiSlider : NxWidget {
     var <list;
+    
+    *new { |bounds serverAddr|
+        ^super.new(bounds, serverAddr).initMs;
+    }
+
+    initMs {
+        list = 0 ! 16;
+    }
+
+    list_ { |l|
+        // if list comes in as a string, split it on spaces and convert to i
+        // floats - Nexus OSC sends lists as strings
+        if(l.isString) {
+            list = l.split(" ").collect(_.asFloat); 
+            this.instVarPut(\list, list);
+            action.(this);
+        } {
+            this.updateProperty(\list, l.join($ ));
+        };
+    }
 }
 
 NxNumber : NxWidget {

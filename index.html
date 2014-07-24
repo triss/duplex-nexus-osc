@@ -83,23 +83,46 @@
             // update a widget 
             function updateWidget(name, property, value) {
                 // here we construct JS and execute it - yuck!
-                var valUpdaterJS;
+                var valUpdaterJS = name;
 
-                // some widget have a value instaed of an object in .val
-                // check to see if this one of them and update 
-                // appropriately
-                if(property != 'value') {
-                    valUpdaterJS = name + '.val["' + property + '"] = ';
-                } else {
-                    valUpdaterJS = name + '.val = ';
+                switch(property) {
+                    // handle color differently to other properties
+                    case 'color':
+                        valUpdaterJS += '.colors.accent = "' + value + '";';
+                        break;
+
+                    // special handling for list properties e.g. multislider
+                    case 'list':
+                        var values = value.split(" ").map(parseFloat);
+                        for(var i = 0; i < values.length; i++) {
+                            updateWidget(name, i, values[i]);
+                        }
+                        valUpdaterJS += '.val["list"] = "' + value + '";';
+                        valUpdaterJS += 
+                            name + '.setNumberOfSliders(' + values.length + ')';
+                        break;
+
+                    // special handling for color property
+                    // some widgets have a value instaed of an object in .val
+                    // check to see if this one of them and update appropriately
+                    case 'value':
+                        valUpdaterJS += '.val = ';
+
+                    default:
+                        valUpdaterJS += '.val["' + property + '"] = ';
+
+                        // if it's a string type property wrap it in quotes
+                        if(typeof value == "string") {
+                            valUpdaterJS += '"' + value + '"';
+                        } else { // otherwise just dump it in the expression
+                            valUpdaterJS += value; 
+                        }
                 }
 
-                // if it's a string type property wrap it in quotes
-                if(typeof value == "string") {
-                    eval(valUpdaterJS + '"' + value + '"');
-                } else { // otherwise just dump it in the expression
-                    eval(valUpdaterJS + value); 
-                }
+                console.log(valUpdaterJS);
+
+                // run the value updater js we just constructed
+                eval(valUpdaterJS);
 
                 // redraw the widget
                 eval(name + '.draw();');
