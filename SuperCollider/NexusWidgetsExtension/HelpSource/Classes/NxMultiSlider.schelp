@@ -1,0 +1,46 @@
+TITLE:: NxMultiSlider
+summary:: Nexus UI MultiSlider
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A multislider for Nexus UI - http://www.nexusosc.com/api/#multislider
+
+
+CLASSMETHODS::
+
+METHOD:: new
+Creates a new Nexus UI multislider
+
+ARGUMENT:: bounds
+A link::Classes/Rect:: representing this multisliders size as a proportion of 
+the devices it's shown on.
+
+ARGUMENT:: serverAddr
+The address of the Duplex Nexus OSC server that this widget should be hosted on. 
+
+
+INSTANCEMETHODS::
+
+METHOD:: list
+The list of values this multislider is displaying.
+
+ARGUMENT:: l
+The list of values to display.
+
+returns:: An array of floats representing the value each slider is set to.
+
+
+EXAMPLES::
+
+code::
+(
+m = NxMultiSlider();
+m.action = { |nx|
+    nx.list.postln;
+};
+)
+
+m.list = [1, 2, 3] / 3;
+m.list = { 1.0.rand } ! 32;
+::

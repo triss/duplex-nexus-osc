@@ -1,0 +1,31 @@
+TITLE:: NxMessage
+summary:: A NexusUI message 
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A NexusUI message that outputs message when clicked.
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: message
+The message last sent by the widget this represents.
+
+returns:: A string containing a message.
+
+
+EXAMPLES::
+
+code::
+(
+m = NxMessage();
+m.message = "button being pressed!";
+m.action = { |nx| nx.message.postln };
+)
+
+m.message = "a different message";
+::

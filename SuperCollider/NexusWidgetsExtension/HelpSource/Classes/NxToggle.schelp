@@ -1,0 +1,28 @@
+TITLE:: NxToggle
+summary:: A NexusUI toggle widget
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+ A NexusUI toggle widget - http://www.nexusosc.com/api/#toggle
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: value
+The value of the toggle.
+
+returns:: 1 if on 0 if off.
+
+EXAMPLES::
+
+code::
+z = NxToggle();
+z.action = { |nx| nx.value.postln };
+
+z.value = 0;
+z.value = 1.0;
+::

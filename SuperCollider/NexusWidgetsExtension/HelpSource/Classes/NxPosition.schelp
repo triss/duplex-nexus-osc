@@ -1,0 +1,46 @@
+TITLE:: NxPosition
+summary:: A NexusUI position (XY slider) widget
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A NexusUI position (XY slider) - http://www.nexusosc.com/api/#position
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: x
+
+returns:: The last x position of the users finger/mouse relative to the widget.
+
+METHOD:: state
+
+returns:: 1 if finger/mouse down, 0 if up
+
+METHOD:: y
+
+returns:: The last x position of the users finger/mouse relative to the widget.
+
+
+EXAMPLES::
+
+code::
+(
+// create a Sine oscillator synth with amp and freq as parameters
+a = { |freq=200 amp=0.5| SinOsc.ar(freq) * amp }.play;
+
+// create an NxPosition (XY) widget on the default Duplex Nexus OSC server
+// by default widgets fill 100% of the screen
+z = NxPosition();
+z.action = { |nx| 
+    a.set(
+        \freq, \freq.asSpec.map(nx.x), 
+        \amp, \amp.asSpec.map(nx.y)
+    )
+}
+)
+::
+

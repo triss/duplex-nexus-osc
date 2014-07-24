@@ -1,0 +1,37 @@
+TITLE:: NxRange
+summary:: A NexusUI range slider widget
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A NexusUI range slider widget - http://www.nexusosc.com/api/#range
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: stop
+
+returns:: where the range stops.
+
+METHOD:: start
+
+returns:: where the range starts.
+
+METHOD:: size
+
+returns:: how big the range is.
+
+
+EXAMPLES::
+
+code::
+(
+r = NxRange();
+r.action = { |nx| [nx.start, nx.stop, nx.size].postln }
+)
+
+r.start = 0.4;
+r.stop = 0.6;
+::

@@ -1,0 +1,36 @@
+TITLE:: NxTilt
+summary:: Provides information about the Tilt of a device running a Nexus UI.
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+Provides information about the Tilt of a device running a Nexus UI. - http://www.nexusosc.com/api/#tilt
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: x
+
+returns:: X-axis rotation if supported (-1 to 1) 
+
+METHOD:: y
+
+returns:: Y-axis rotation if supported (-1 to 1)
+
+METHOD:: z
+
+returns:: Z-axis rotation if supported (-1 to 1 or possible 0 to 360)
+
+
+EXAMPLES::
+
+code::
+z = NxTilt(Rect(0, 0, 10, 10));
+z.action = { |nx| [nx.x, nx.y, nx.z].postln };
+
+// remove widget
+z.remove;
+::

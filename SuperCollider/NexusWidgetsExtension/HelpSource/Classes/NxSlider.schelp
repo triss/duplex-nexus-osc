@@ -1,0 +1,28 @@
+TITLE:: NxSlider
+summary:: A NexusUI slider widget
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+ A NexusUI slider widget - http://www.nexusosc.com/api/#slider
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: value
+The value of the slider.
+
+returns:: The value of the slider (0-1.0)
+
+EXAMPLES::
+
+code::
+z = NxSlider();
+z.action = { |nx| nx.value.postln };
+
+z.value = 0.5;
+z.value = 1.0;
+::

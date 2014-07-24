@@ -1,0 +1,34 @@
+TITLE:: NxNumber
+summary:: A NexusUI number box
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A Nexus UI Number Box - http://www.nexusosc.com/api/#number
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: value
+The current value in the number box.
+
+returns:: The number dispalyed by the number box.
+
+
+EXAMPLES::
+
+code::
+(
+n = NxNumber(Rect(25, 25, 50, 50));
+n.action = { |nx| nx.value.postln };
+)
+
+n.value = 5;
+n.value = 6;
+::
+
+
+

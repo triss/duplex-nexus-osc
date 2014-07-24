@@ -1,0 +1,39 @@
+TITLE:: NxKeyboard
+summary:: A NexusUI keyboard
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A NexusUI keyboard - http://www.nexusosc.com/api/#keyboard
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: on
+Whether or not a key is pressed.
+
+returns:: 1 if pressed, 0 if released
+
+METHOD:: note
+The number of the last note to be pressed or released.
+
+returns:: The number of the last note to be pressed or released.
+
+
+EXAMPLES::
+
+code::
+(
+k = NxKeyboard();
+k.action = { |nx| 
+    if(nx.on == 1) {
+        [nx.note, "pressed"].postln;
+    } {
+        [nx.note, "released"].postln;
+    }
+}
+)
+::

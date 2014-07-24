@@ -1,0 +1,42 @@
+TITLE:: NxMouse
+summary:: Provides information about clients mouse position on NexusUI.
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+Provides information about clients mouse position on a Nexus UI - http://www.nexusosc.com/api/#mouse
+
+May not behave as expected when UI is running on multiple devices.
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: y
+
+returns:: y value of mouse relative to browser 
+
+METHOD:: x
+
+returns:: x value of mouse relative to browser 
+
+METHOD:: deltay
+
+returns:: x change in mouse from last position
+
+METHOD:: deltax
+
+returns:: y change in mouse from last position
+
+
+EXAMPLES::
+
+code::
+(
+m = NxMouse(Rect(0, 0, 10, 10));
+m.action = { |nx| 
+    [ 'pos:', nx.x, nx.y, 'delta:', nx.deltax, nx.deltay ].postln 
+};
+)
+::
