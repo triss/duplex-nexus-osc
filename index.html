@@ -99,7 +99,13 @@
                         }
                         valUpdaterJS += '.val["list"] = "' + value + '";';
                         valUpdaterJS += 
-                            name + '.setNumberOfSliders(' + values.length + ')';
+                            name + '.setNumberOfSliders(' + values.length + ');';
+
+                        // clean up extrenuous data if we have less sliders tha
+                        // before
+                        valUpdaterJS += 'for(var i in ' + name + '.val) {';
+                        valUpdaterJS += '   if(i >= ' + values.length + ') {';
+                        valUpdaterJS += '        delete ' + name + '.val[i];}}';
                         break;
 
                     // special handling for color property
