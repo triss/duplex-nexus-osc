@@ -1,0 +1,33 @@
+TITLE:: NxDial
+summary:: A NexusUI dial
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A NexusUI dial - http://www.nexusosc.com/api/#dial
+
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: value
+The value the dial is currently set to.
+
+returns:: The value the dial is currently set to.
+
+
+EXAMPLES::
+
+code::
+(
+d = NxDial();
+d.action { |nx| nx.value.postln };
+)
+
+d.value = 0.1;
+d.value = 0.5;
+d.value = 1.0;
+::

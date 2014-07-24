@@ -23,6 +23,13 @@ Points at the default port for Duplex Nexus OSC on the local machine by default.
 
 INSTANCEMETHODS::
 
+METHOD:: color
+
+Set's the color of the widget.
+
+ARGUMENT:: c
+A link::Classes/Color::
+
 METHOD:: remove
 Removes the Widget from the display.
 

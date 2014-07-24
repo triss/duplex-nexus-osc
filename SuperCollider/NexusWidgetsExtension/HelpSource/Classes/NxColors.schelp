@@ -1,0 +1,44 @@
+TITLE:: NxColors
+summary:: A Nexus UI Color picker that outputs RBG values
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+A Nexus UI Color picker that outputs RBG values - http://www.nexusosc.com/api/#colors
+
+
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: b
+The blue value of the currently selected colour.
+
+returns:: The blue value of the current colour between 0 and 255
+
+METHOD:: r
+The red value of the currently selected colour.
+
+returns:: The red value of the current colour between 0 and 255
+
+METHOD:: g
+The red value of the currently selected colour.
+(describe method here)
+
+returns:: The green value of the current colour between 0 and 255
+
+
+
+EXAMPLES::
+
+code::
+(
+c = NxColors(Rect(0, 0, 50, 50));
+c.action = { |nx| 
+    ['r:', nx.r, 'g:', nx.g, 'b:', nx.b].postln;
+};
+)
+::

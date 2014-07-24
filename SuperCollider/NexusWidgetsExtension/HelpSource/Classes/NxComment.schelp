@@ -1,0 +1,28 @@
+TITLE:: NxComment
+summary:: NexusUI widget comment area with settable text
+categories:: NexusUI
+related:: Classes/NxWidget
+
+DESCRIPTION::
+NexusUI widget comment area with settable text - http://www.nexusosc.com/api/#comment
+
+
+CLASSMETHODS::
+
+
+INSTANCEMETHODS::
+
+METHOD:: text
+The string this NxComment displays.
+
+returns:: The string this NxComment displays.
+
+
+EXAMPLES::
+
+code::
+(
+c = NxComment(Rect(50, 50, 50, 50));
+c.text = "hello";
+)
+::
