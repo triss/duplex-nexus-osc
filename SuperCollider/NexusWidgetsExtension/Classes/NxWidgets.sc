@@ -80,7 +80,7 @@ NxToggle : NxWidget {
 }
 
 NxTilt : NxWidget {
-    var <x, <y, z;
+    var <x, <y, <z;
 }
 
 NxTypewriter : NxWidget {

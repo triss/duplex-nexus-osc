@@ -1,5 +1,5 @@
 <!doctype html>
-   	<html>
+<html>
 	<head>
 		<title>Nexus UI</title>
 
@@ -97,10 +97,10 @@
                         for(var i = 0; i < values.length; i++) {
                             updateWidget(name, i, values[i]);
                         }
-                        valUpdaterJS += '.val["list"] = "' + value + '";';
-                        valUpdaterJS += 
-                            name + '.setNumberOfSliders(' + values.length + ');';
+                        valUpdaterJS += '.setNumberOfSliders(' + values.length + ');';
 
+                        valUpdaterJS += name + '.val["list"] = "' + value + '";';
+                        
                         // clean up extrenuous data if we have less sliders tha
                         // before
                         valUpdaterJS += 'for(var i in ' + name + '.val) {';
@@ -117,7 +117,6 @@
                             valUpdaterJS += '.val["' + property + '"] = ';
                         }
 
-
                         // if it's a string type property wrap it in quotes
                         if(typeof value == "string") {
                             valUpdaterJS += '"' + value + '"';
@@ -126,7 +125,7 @@
                         }
                 }
 
-                console.log(valUpdaterJS);
+                // console.log(valUpdaterJS);
 
                 // run the value updater js we just constructed
                 eval(valUpdaterJS);
