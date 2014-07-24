@@ -93,7 +93,7 @@ a = { |freq=200 amp=0.5| SinOsc.ar(freq) * amp }.play;
 z = NxPosition();
 z.action = { |nx| 
     a.set(
-        \freq, \freq.asSpec.map(nx.x) 
+        \freq, \freq.asSpec.map(nx.x), 
         \amp, nx.y
     )
 }
